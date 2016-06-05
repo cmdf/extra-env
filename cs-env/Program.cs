@@ -29,7 +29,7 @@ namespace cs_env {
 		/// </summary>
 		/// <param name="args">Input parameters.</param>
 		static void Main(string[] args) {
-			var p = GetOpt(new string[] {  });
+			var p = GetOpt(new string[] {"get", "desktop"});
 			var key = (p.args.Count == 0 ? "" : p.args[0]).ToLower();
 			key = Cmd.ContainsKey(key) ? key : "";
       Cmd[key](p);
@@ -41,7 +41,7 @@ namespace cs_env {
 		/// <param name="p">Input parameters.</param>
 		private static void List(oParams p) {
 			var env = Environment.GetEnvironmentVariables(p.mode);
-      foreach(var k in env)
+      foreach(var k in env.Keys)
 				Console.WriteLine(k+"="+env[k]);
 		}
 		/// <summary>
@@ -51,7 +51,7 @@ namespace cs_env {
 		private static void Get(oParams p) {
 			var key = p.args.Count >= 2 ? p.args[1] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
-			if(val == null) Console.WriteLine(val);
+			if(val != null) Console.WriteLine(val);
 		}
 		/// <summary>
 		/// Set environment variable's value.
