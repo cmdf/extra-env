@@ -11,6 +11,6 @@ namespace orez.env {
 		/// <summary>
 		/// This includes the subcommand, and its input arguments.
 		/// </summary>
-		public IList<string> args = new List<string>();
+		public string[] args = new string[0];
 	}
 }

@@ -30,7 +30,7 @@ namespace orez.env {
 		/// <param name="args">Input parameters.</param>
 		static void Main(string[] args) {
 			var p = GetOpt(args);
-			var key = (p.args.Count == 0 ? "" : p.args[0]).ToLower();
+			var key = (p.args.Length == 0 ? "" : p.args[0]).ToLower();
 			key = Cmd.ContainsKey(key) ? key : "";
       Cmd[key](p);
 		}
@@ -49,7 +49,7 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Get(oParams p) {
-			var key = p.args.Count > 1 ? p.args[1] : "";
+			var key = p.args.Length > 1 ? p.args[1] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
 			if(val != null) Console.WriteLine(val);
 		}
@@ -58,8 +58,8 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Set(oParams p) {
-			if(p.args.Count < 2) return;
-			string key = p.args[1], val = p.args.Count > 2 ? p.args[2] : "";
+			if(p.args.Length < 2) return;
+			string key = p.args[1], val = p.args.Length > 2 ? p.args[2] : "";
 			Environment.SetEnvironmentVariable(key, val, p.mode);
 		}
 		/// <summary>
@@ -67,14 +67,14 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Delete(oParams p) {
-			if(p.args.Count > 1) Environment.SetEnvironmentVariable(p.args[1], null, p.mode);
+			if(p.args.Length > 1) Environment.SetEnvironmentVariable(p.args[1], null, p.mode);
 		}
 		/// <summary>
 		/// Tells whether a sub-value is in environment variable.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Has(oParams p) {
-			string key = p.args.Count > 1 ? p.args[1] : "", sub = p.args.Count > 2 ? p.args[2] : "";
+			string key = p.args.Length > 1 ? p.args[1] : "", sub = p.args.Length > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
 			Console.WriteLine(val != null ? (Array.IndexOf(val.Split(';'), sub) >= 0 ? 1 : 0) : 0);
 		}
@@ -83,8 +83,8 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Add(oParams p) {
-			if(p.args.Count < 2) return;
-			string key = p.args[1], sub = p.args.Count > 2 ? p.args[2] : "";
+			if(p.args.Length < 2) return;
+			string key = p.args[1], sub = p.args.Length > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
 			var arr = val == null || val == "" ? new string[0] : val.Split(';');
 			var lst = new List<string>(arr);
@@ -97,8 +97,8 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Remove(oParams p) {
-			if(p.args.Count < 2) return;
-			string key = p.args[1], sub = p.args.Count > 2 ? p.args[2] : "";
+			if(p.args.Length < 2) return;
+			string key = p.args[1], sub = p.args.Length > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
 			var arr = val == null || val == "" ? new string[0] : val.Split(';');
 			var lst = new List<string>(arr);
@@ -121,7 +121,7 @@ namespace orez.env {
 						p.mode = EnvironmentVariableTarget.Machine;
 						break;
 					default:
-						p.args.Add(args[i]);
+						// p.args.Add(args[i]);
 						break;
 				}
 			}
