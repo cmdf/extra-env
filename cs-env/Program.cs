@@ -86,8 +86,9 @@ namespace orez.env {
 			if(p.args.Count < 2) return;
 			string key = p.args[1], sub = p.args.Count > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
-			var lst = val != null && val.Length != 0 ? new List<string>(val.Split(';')) : new List<string>();
-			if(!lst.Contains(sub)) lst.Add(sub);
+			var arr = val == null || val == "" ? new string[0] : val.Split(';');
+			var lst = new List<string>(arr);
+      if(!lst.Contains(sub)) lst.Add(sub);
 			val = string.Join(";", lst);
 			Environment.SetEnvironmentVariable(key, val, p.mode);
 		}
@@ -99,7 +100,8 @@ namespace orez.env {
 			if(p.args.Count < 2) return;
 			string key = p.args[1], sub = p.args.Count > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
-			var lst = val != null && val.Length != 0 ? new List<string>(val.Split(';')) : new List<string>();
+			var arr = val == null || val == "" ? new string[0] : val.Split(';');
+			var lst = new List<string>(arr);
 			lst.Remove(sub);
 			val = string.Join(";", lst);
 			Environment.SetEnvironmentVariable(key, val, p.mode);
