@@ -32,7 +32,8 @@ namespace orez.env {
 			var p = GetOpt(args);
 			var key = (p.args.Length == 0 ? "" : p.args[0]).ToLower();
 			key = Cmd.ContainsKey(key) ? key : "";
-      Cmd[key](p);
+			try { Cmd[key](p); }
+			catch(Exception e) { Console.Error.WriteLine("err: "+e.Message.ToLower()); }
 		}
 
 		/// <summary>
