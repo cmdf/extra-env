@@ -67,7 +67,7 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
 		private static void Delete(oParams p) {
-			if(p.args.Count < 2) Environment.SetEnvironmentVariable(p.args[1], null, p.mode);
+			if(p.args.Count > 1) Environment.SetEnvironmentVariable(p.args[1], null, p.mode);
 		}
 		/// <summary>
 		/// Tells whether a sub-value is in environment variable.
