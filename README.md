@@ -55,8 +55,3 @@ Get or set Environment variables in Windows Console.
 :: remove "SDK Manager.exe" path from machine environment variable "path"
 > oenv -m remove path "C:\Program_Files\Android\SDK"
 ```
-
-
-## license
-
-Do you have a Poké ball? That's enough!
