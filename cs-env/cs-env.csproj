@@ -7,8 +7,8 @@
     <ProjectGuid>{83787DD4-FE30-4B13-B27C-3CE42BC723FF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cs_env</RootNamespace>
-    <AssemblyName>cs-env</AssemblyName>
+    <RootNamespace>orez.env</RootNamespace>
+    <AssemblyName>oenv</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
