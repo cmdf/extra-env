@@ -86,7 +86,9 @@ namespace orez.env {
 			if(p.args.Count < 2) return;
 			string key = p.args[1], sub = p.args.Count > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
-			val = val != null && val.Length > 0 ? val + ";" + sub : sub;
+			var lst = new List<string>((val != null ? val : "").Split(';'));
+			if(!lst.Contains(sub)) lst.Add(sub);
+			val = string.Join(";", lst);
 			Environment.SetEnvironmentVariable(key, val, p.mode);
 		}
 		/// <summary>
