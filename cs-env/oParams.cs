@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace cs_env {
+namespace orez.env {
 	class oParams {
 
 		public EnvironmentVariableTarget mode = EnvironmentVariableTarget.User;
