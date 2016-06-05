@@ -121,7 +121,9 @@ namespace orez.env {
 						p.mode = EnvironmentVariableTarget.Machine;
 						break;
 					default:
-						// p.args.Add(args[i]);
+						p.args = new string[args.Length - i];
+						Array.Copy(args, i, p.args, 0, p.args.Length);
+						i = args.Length;
 						break;
 				}
 			}
