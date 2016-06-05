@@ -29,7 +29,7 @@ namespace cs_env {
 		/// </summary>
 		/// <param name="args">Input parameters.</param>
 		static void Main(string[] args) {
-			var p = GetOpt(new string[] {"get", "desktop"});
+			var p = GetOpt(args);
 			var key = (p.args.Count == 0 ? "" : p.args[0]).ToLower();
 			key = Cmd.ContainsKey(key) ? key : "";
       Cmd[key](p);
