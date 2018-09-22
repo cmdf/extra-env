@@ -109,7 +109,7 @@ namespace App {
 		}
 
 		/// <summary>
-		/// Get input parameters to oenv.
+		/// Get input parameters to eenv.
 		/// </summary>
 		/// <param name="args">Input arguments.</param>
 		/// <returns>Input parameters.</returns>
