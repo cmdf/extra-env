@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace orez.env {
+namespace App {
 	class Program {
 
 		// types
@@ -10,7 +10,7 @@ namespace orez.env {
 		/// and performs the necessary action.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private delegate void Fn(oParams p);
+		private delegate void Fn(Params p);
 
 
 		// static data
@@ -40,7 +40,7 @@ namespace orez.env {
 		/// List all environment variables.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void List(oParams p) {
+		private static void List(Params p) {
 			var env = Environment.GetEnvironmentVariables(p.mode);
       foreach(var k in env.Keys)
 				Console.WriteLine(k+"="+env[k]);
@@ -49,7 +49,7 @@ namespace orez.env {
 		/// Get environment variable's value.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void Get(oParams p) {
+		private static void Get(Params p) {
 			var key = p.args.Length > 1 ? p.args[1] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
 			if(val != null) Console.WriteLine(val);
@@ -58,7 +58,7 @@ namespace orez.env {
 		/// Set environment variable's value.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void Set(oParams p) {
+		private static void Set(Params p) {
 			if(p.args.Length < 2) return;
 			string key = p.args[1], val = p.args.Length > 2 ? p.args[2] : "";
 			Environment.SetEnvironmentVariable(key, val, p.mode);
@@ -67,14 +67,14 @@ namespace orez.env {
 		/// Delete environment variable.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void Delete(oParams p) {
+		private static void Delete(Params p) {
 			if(p.args.Length > 1) Environment.SetEnvironmentVariable(p.args[1], null, p.mode);
 		}
 		/// <summary>
 		/// Tells whether a sub-value is in environment variable.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void Has(oParams p) {
+		private static void Has(Params p) {
 			string key = p.args.Length > 1 ? p.args[1] : "", sub = p.args.Length > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
 			Console.WriteLine(val != null ? (Array.IndexOf(val.Split(';'), sub) >= 0 ? 1 : 0) : 0);
@@ -83,7 +83,7 @@ namespace orez.env {
 		/// Add a sub-value to an environment variable.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void Add(oParams p) {
+		private static void Add(Params p) {
 			if(p.args.Length < 2) return;
 			string key = p.args[1], sub = p.args.Length > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
@@ -97,7 +97,7 @@ namespace orez.env {
 		/// Remove a sub-value from an environment variable.
 		/// </summary>
 		/// <param name="p">Input parameters.</param>
-		private static void Remove(oParams p) {
+		private static void Remove(Params p) {
 			if(p.args.Length < 2) return;
 			string key = p.args[1], sub = p.args.Length > 2 ? p.args[2] : "";
 			var val = Environment.GetEnvironmentVariable(key, p.mode);
@@ -113,8 +113,8 @@ namespace orez.env {
 		/// </summary>
 		/// <param name="args">Input arguments.</param>
 		/// <returns>Input parameters.</returns>
-		private static oParams GetOpt(string[] args) {
-			var p = new oParams();
+		private static Params GetOpt(string[] args) {
+			var p = new Params();
 			for(var i = 0; i < args.Length; i++) {
 				switch(args[i]) {
 					case "--machine":

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace orez.env {
-	class oParams {
+namespace App {
+	class Params {
 
 		/// <summary>
 		/// Indicates mode to use for getting or setting environment variable.
