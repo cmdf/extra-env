@@ -54,3 +54,6 @@
 :: remove "SDK Manager.exe" path from machine environment variable "path"
 > oenv -m remove path "C:\Program_Files\Android\SDK"
 ```
+
+
+[![Merferry](https://i.imgur.com/pZjAAcb.jpg)](https://merferry.github.io)
