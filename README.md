@@ -1,5 +1,5 @@
 ﻿Get or set Environment variables in Windows Console.
-> 1. Download [exe file](https://github.com/winp/extra-env/releases/download/1.0.0/eenv.exe).
+> 1. Download [exe file](https://github.com/cmdf/extra-env/releases/download/1.0.0/eenv.exe).
 > 2. Copy to `C:\Program_Files\Scripts`.
 > 3. Add `C:\Program_Files\Scripts` to `PATH` environment variable.
 
@@ -56,4 +56,4 @@
 ```
 
 
-[![Merferry](https://i.imgur.com/pZjAAcb.jpg)](https://merferry.github.io)
+[![cmdf](https://i.imgur.com/pZjAAcb.jpg)](https://cmdf.github.io)
