@@ -1,9 +1,8 @@
-﻿# oenv
+﻿Get or set Environment variables in Windows Console.
+> 1. Download [exe file](https://raw.githubusercontent.com/winp/extra-bel/master/ecd.cmd).
+> 2. Copy to `C:\Program_Files\Scripts`.
+> 3. Add `C:\Program_Files\Scripts` to `PATH` environment variable.
 
-Get or set Environment variables in Windows Console.
-
-
-## usage
 
 ```batch
 > oenv [-m|--machine] [get|set|delete|has|add|remove] <variable> [<value>]
